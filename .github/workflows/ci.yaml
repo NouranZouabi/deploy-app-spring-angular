@@ -6,7 +6,7 @@ on:
     - main
 
 env:
-  DOCKER_USERNAME:${{secrets.DOCKERHUB_USERNAME}}
+  DOCKER_USERNAME:${{secrets.DOCKER_USERNAME}}
 
 jobs:
   # This workflow contains a single job called"build"
