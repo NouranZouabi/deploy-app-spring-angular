@@ -5,7 +5,7 @@ on:
     branches:
     - main
 env: 
-  USERNAME:${{vars.DOCKERHUB_USERNAME}}
+  DOCKERHUB_USERNAME:${{vars.DOCKERHUB_USERNAME}}
 
 jobs:
   # This workflow containsa single job called  "build"
@@ -35,13 +35,13 @@ jobs:
 
     - name: build image spring 
       run: |
-        docker build -t $USERNAME/spring-app springboot/app
-        docker push $USERNAME/spring-app
+        docker build -t $DOCKERHUB_USERNAME/spring-app springboot/app
+        docker push $DOCKERHUB_USERNAME/spring-app
 
     - name: build image angular 
       run: |
-        docker build -t $USERNAME/angular-app angular-app
-        docker push $USERNAME/angular-app
+        docker build -t $DOCKERHUB_USERNAME/angular-app angular-app
+        docker push $DOCKERHUB_USERNAME/angular-app
 
     - name: Run docker compose 
       run: |
