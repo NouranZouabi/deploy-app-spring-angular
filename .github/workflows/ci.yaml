@@ -7,7 +7,6 @@ on:
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-  IMAGE_TAG: ${{ github.sha }}
 
 jobs:
 
@@ -48,8 +47,8 @@ jobs:
 
     - name: Build & Push Backend Docker Image
       run: |
-        docker build -t $DOCKER_USERNAME/myapp-backend:$IMAGE_TAG springboot/app
-        docker push $DOCKER_USERNAME/myapp-backend:$IMAGE_TAG
+        docker build -t $DOCKER_USERNAME/myapp-backend springboot/app
+        docker push $DOCKER_USERNAME/myapp-backend
 
     # -------------------------
     # 3️⃣ FRONTEND – Angulare
@@ -57,8 +56,8 @@ jobs:
 
     - name: Build & Push Frontend Docker Image
       run: |
-        docker build -t $DOCKER_USERNAME/myapp-frontend:$IMAGE_TAG angular-app
-        docker push $DOCKER_USERNAME/myapp-frontend:$IMAGE_TAG
+        docker build -t $DOCKER_USERNAME/myapp-frontend angular-app
+        docker push $DOCKER_USERNAME/myapp-frontend
 
     # -------------------------
     # 4️⃣ test
