@@ -32,6 +32,17 @@ pipeline {
                   }                
               }
           }
+        stage('Run Sonarqube') {
+            environment {
+                scannerHome = tool 'lil-sonar-tool';
+            }
+            steps {
+              withSonarQubeEnv(credentialsId: 'sonar', installationName: 'lil sonar installation') {
+                sh "${scannerHome}/bin/sonar-scanner"
+              }
+            }
+        }
+
         stage ("Run docker compose") {
             steps {
                  dir("app"){
